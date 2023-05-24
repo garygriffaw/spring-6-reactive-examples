@@ -33,9 +33,7 @@ class PersonRepositoryImplTest {
     void testMapOperation() {
         Mono<Person> personMono = personRepository.getById(1);
 
-        personMono.map(person -> {
-            return person.getFirstName();
-        }).subscribe(firstName -> {
+        personMono.map(Person::getFirstName).subscribe(firstName -> {
             System.out.println(firstName);
         });
     }
