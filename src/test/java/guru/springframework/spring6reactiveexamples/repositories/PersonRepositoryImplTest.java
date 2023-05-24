@@ -25,7 +25,7 @@ class PersonRepositoryImplTest {
 
     @Test
     void testGetByIDSubscriber() {
-        Mono<Person> personMono = personRepository.getById(1);
+        Mono<Person> personMono = personRepository.getById(2);
 
         personMono.subscribe(person -> {
             System.out.println(person.toString());
@@ -113,5 +113,19 @@ class PersonRepositoryImplTest {
             System.out.println("Error occurred in subscribe");
             System.out.println(throwable.toString());
         });
+    }
+
+    @Test
+    void testGetByIdFound() {
+        Mono<Person> personMono = personRepository.getById(3);
+
+        assertTrue(personMono.hasElement().block());
+    }
+
+    @Test
+    void testGetByIdNotFound() {
+        Mono<Person> personMono = personRepository.getById(10);
+
+        assertFalse(personMono.hasElement().block());
     }
 }
