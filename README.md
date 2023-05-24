@@ -1,4 +1,4 @@
-# spring-6-resttemplate
+# spring-6-reactive-examples
 This repository contains code examples for my course Spring Framework 6: Beginner to Guru.
 
 ## All Spring Framework Guru Courses
